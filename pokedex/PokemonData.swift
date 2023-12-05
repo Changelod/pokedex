@@ -16,7 +16,7 @@ struct Pokemon: Identifiable {
 }
 
 let pokemonData: [Pokemon] = [
-    Pokemon(name: "Bulbasaur", number: 1, imageName: "1", types: ["Planta", "Veneno"]),
+    Pokemon(name: "Bulbasaur", number: 1, imageName: "1", types: ["Planta", "Veneno", "Veneno2", "Veneno3", "Veneno4"]),
     Pokemon(name: "Ivysaur", number: 2, imageName: "2", types: ["Planta", "Veneno"]),
     Pokemon(name: "Venusaur", number: 3, imageName: "3", types: ["Planta", "Veneno"]),
     Pokemon(name: "Charmander", number: 4, imageName: "4", types: ["Fuego"]),
