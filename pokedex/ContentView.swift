@@ -8,81 +8,105 @@
 import SwiftUI
 
 struct ContentView: View {
-
-    
     var body: some View {
-       
-            ZStack{
-                
-                Color.red.edgesIgnoringSafeArea(.all)
-                
-                HStack {
-                    
-                    VStack {
-                        Circle()
-                            .fill(Color.blue)
-                            .frame(width: 50, height: 50)
-                            .overlay(Circle().stroke(Color.black, lineWidth: 6))
-                            .padding(.top, 0)
-                            .padding(.leading, -180)
-                        
-                        Spacer()
-                    }
-                    VStack {
-                        Circle()
-                            .fill(Color.yellow)
-                            .frame(width: 30, height: 50)
-                            .overlay(Circle().stroke(Color.black, lineWidth: 6))
-                            .padding(.top, -10)
-                            .padding(.leading, -130)
-                        
-                        Spacer()
-                    }
-                    
-                    VStack {
-                        Circle()
-                            .fill(Color.green)
-                            .frame(width: 30, height: 50)
-                            .overlay(Circle().stroke(Color.black, lineWidth: 6))
-                            .padding(.top, -10)
-                            .padding(.leading, -100)
-                        
-                        Spacer()
-                        
-                    }
-                    
-                }
-                
-                VStack(alignment: .center) {
-                    // Imagen en el centro
-                    Spacer()
-   
-                    Image("1")
+        VStack{
+            makePokedexLogo()
+            List(pokemonData) { pokemon in
+                HStack{
+                    Image(pokemon.imageName)
                         .resizable()
-                        .scaledToFit()
-                        .frame(width: 200, height: 200)
-                        .opacity(0.09) // Ajusta la opacidad del reflejo
-                        .rotationEffect(.degrees(180)) // Voltea la imagen verticalmente
-                        .scaleEffect(x: -1, y: 1)
-                        .offset(x: -60, y: -300) // Ajusta la posición vertical del reflejo
-                       
+                        .frame(width: 60, height: 60)
+                        .aspectRatio(contentMode: .fill)
+                    VStack(alignment: .leading){
+                        Text(pokemon.name)
+                            .font(.title)
+                        Text("Types: \(pokemon.types.first ?? "")")
+                            .font(.subheadline)
+                            .bold()
+                    }
                 }
-                Text("Bulbasour")
-                    .foregroundColor(.white) // Cambiar el color del texto a azul
-                    .font(.system(size: 30))
-                    .bold()
-                    .cornerRadius(5)
-                    .offset(x: -50, y: -70)
-                Spacer()
-                
-                }
-               
             }
-            
+//            ScrollView(.vertical) {
+//                    VStack(alignment: .leading) {
+//                        ForEach(pokemonData) { pokemon in
+//                                            HStack{
+//                                                Image(pokemon.imageName)
+//                                                    .resizable()
+//                                                    .frame(width: 60, height: 60)
+//                                                    .aspectRatio(contentMode: .fill)
+//                                                VStack(alignment: .leading){
+//                                                    Text(pokemon.name)
+//                                                        .font(.title)
+//                                                    Text("Types: \(pokemon.types.first ?? "")")
+//                                                        .font(.subheadline)
+//                                                        .bold()
+//                                                }
+//                                                Spacer()
+//                                            }
+//                                .background(.blue, in: RoundedRectangle(cornerRadius: 20))
+//                                .padding(5)
+//                            
+//                        }
+//                    }
+//    
+//            }.scrollIndicators(.never)
+
         }
-        
-    #Preview {
-        ContentView()
+        .background(.red)
     }
     
+    func makePokedexLogo() -> some View {
+        return HStack {
+            Circle()
+                .fill(Color.blue)
+                .frame(width: 50, height: 50)
+                .overlay(Circle().stroke(Color.black, lineWidth: 6))
+                .padding(.top, 0)
+            
+            Circle()
+                .fill(Color.yellow)
+                .frame(width: 30, height: 50)
+                .overlay(Circle().stroke(Color.black, lineWidth: 6))
+            
+            Circle()
+                .fill(Color.green)
+                .frame(width: 30, height: 50)
+                .overlay(Circle().stroke(Color.black, lineWidth: 6))
+            Text("POKEDEX")
+                .font(.title)
+                .foregroundStyle(.white)
+                .bold()
+                .padding(.leading, 10)
+            Spacer()
+            
+            
+        }.padding(.leading, 10)
+        
+        
+    }
+}
 
+#Preview {
+    ContentView()
+}
+
+
+
+
+//Image("1")
+//    .resizable()
+//    .scaledToFit()
+//    .frame(width: 200, height: 200)// Ajusta la posición vertical del reflejo
+//Image("1")
+//    .resizable()
+//    .scaledToFit()
+//    .frame(width: 200, height: 200)
+//    .opacity(0.09) // Ajusta la opacidad del reflejo
+//    .rotationEffect(.degrees(180)) // Voltea la imagen verticalmente
+//    .scaleEffect(x: -1, y: 1) // Ajusta la posición vertical del reflejo
+//
+//Text("Bulbasour")
+//    .foregroundColor(.white) // Cambiar el color del texto a azul
+//    .font(.system(size: 30))
+//    .bold()
+//    .cornerRadius(5)
