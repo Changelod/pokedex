@@ -20,9 +20,17 @@ struct ContentView: View {
                     VStack(alignment: .leading){
                         Text(pokemon.name)
                             .font(.title)
-                        Text("Types: \(pokemon.types.first ?? "")")
-                            .font(.subheadline)
-                            .bold()
+                        HStack(alignment: .top) {
+                            Text("Types:")
+                                .font(.subheadline)
+                                .bold()
+                            VStack(alignment: .leading) {
+                                ForEach(pokemon.types, id: \.self) { type in
+                                   Text("🔵 \(type)")
+                                }
+                            }
+                            
+                        }
                     }
                 }
             }
