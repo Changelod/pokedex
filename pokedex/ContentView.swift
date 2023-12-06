@@ -21,7 +21,7 @@ struct ContentView: View {
                         Text(pokemon.name)
                             .font(.title)
                         HStack(alignment: .top) {
-                            Text("Types:")
+                            Text("Tipos:")
                                 .font(.subheadline)
                                 .bold()
                             VStack(alignment: .leading) {
