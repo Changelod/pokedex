@@ -8,34 +8,23 @@
 import SwiftUI
 
 struct PokemonListView: View {
+    let columns = [GridItem(.flexible()), GridItem(.flexible())]
+    
     var body: some View {
         VStack{
             makePokedexLogo()
             NavigationView {
-                List(pokemonData) { pokemon in
-                    NavigationLink(destination: PokemonDetailView(pokemon: pokemon)) {
-                        HStack{
-                            Image(pokemon.imageName)
-                                .resizable()
-                                .frame(width: 70, height: 70)
-                                .aspectRatio(contentMode: .fill)
-                            VStack(alignment: .leading){
-                                Text(pokemon.name)
-                                    .font(.title)
-                                HStack(alignment: .top) {
-                                    Text("Tipos:")
-                                        .font(.subheadline)
-                                        .bold()
-                                    VStack(alignment: .leading) {
-                                        ForEach(pokemon.types, id: \.self) { type in
-                                            Text("🔵 \(type)")
-                                        }
-                                    }
-                                    
-                                }
+                ScrollView {
+                    LazyVGrid(columns: columns) {
+                        ForEach(pokemonData) { pokemon in
+                            NavigationLink(destination: PokemonDetailView(pokemon: pokemon)) {
+                                
+                                PokemonGridItemView(pokemon: pokemon)
+                                
+                                
                             }
                         }
-                    }
+                    }.padding()
                 }
             }
         }.background(.red)
