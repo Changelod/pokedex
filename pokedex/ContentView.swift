@@ -11,29 +11,36 @@ struct ContentView: View {
     var body: some View {
         VStack{
             makePokedexLogo()
-            List(pokemonData) { pokemon in
-                HStack{
-                    Image(pokemon.imageName)
-                        .resizable()
-                        .frame(width: 60, height: 60)
-                        .aspectRatio(contentMode: .fill)
-                    VStack(alignment: .leading){
-                        Text(pokemon.name)
-                            .font(.title)
-                        HStack(alignment: .top) {
-                            Text("Tipos:")
-                                .font(.subheadline)
-                                .bold()
-                            VStack(alignment: .leading) {
-                                ForEach(pokemon.types, id: \.self) { type in
-                                   Text("🔵 \(type)")
+            NavigationView {
+                List(pokemonData) { pokemon in
+                    NavigationLink(destination: PokemonDetailView(pokemon: pokemon)) {
+                        HStack{
+                            Image(pokemon.imageName)
+                                .resizable()
+                                .frame(width: 70, height: 70)
+                                .aspectRatio(contentMode: .fill)
+                            VStack(alignment: .leading){
+                                Text(pokemon.name)
+                                    .font(.title)
+                                HStack(alignment: .top) {
+                                    Text("Tipos:")
+                                        .font(.subheadline)
+                                        .bold()
+                                    VStack(alignment: .leading) {
+                                        ForEach(pokemon.types, id: \.self) { type in
+                                            Text("🔵 \(type)")
+                                        }
+                                    }
+                                    
                                 }
                             }
-                            
                         }
                     }
                 }
             }
+        }.background(.red)
+    }
+            
 //            ScrollView(.vertical) {
 //                    VStack(alignment: .leading) {
 //                        ForEach(pokemonData) { pokemon in
@@ -59,9 +66,84 @@ struct ContentView: View {
 //    
 //            }.scrollIndicators(.never)
 
+    
+    struct PokemonDetailView: View {
+        var pokemon: Pokemon
+
+        var body: some View {
+            Text("\(pokemon.name)")
+                .font(.title)
+                .bold()
+            HStack (alignment: .center){
+                Image(pokemon.imageName)
+                    .resizable()
+                    .frame(width: 200, height: 200)
+                    .scaledToFit()
+                    .scaleEffect(anchor: .top)
+                VStack(alignment: .center){
+                    
+                    HStack(alignment: .top) {
+                        Text("Tipos:")
+                            .font(.subheadline)
+                            .bold()
+                        VStack(alignment: .leading) {
+                            ForEach(pokemon.types, id: \.self) { type in
+                                Text("🔵 \(type)")
+                            }
+                        }
+                    }
+                }
+                   
+            }
+          
+            
+            Image(pokemon.imageName)
+                    .resizable()
+                    .frame(width: 300, height: 300)
+                    .scaledToFit()
+                    .opacity(0.09)
+            .overlay(
+            HStack(alignment: .center) {
+      
+            Text("\(pokemon.description)")
+                    .bold()
+                
+            }
+            )
+            Spacer()
+            
+            ZStack {
+                       
+                        Circle()
+                            .fill(Color.white)
+                        
+                        Circle()
+                            .fill(Color.red)
+                            .frame(width: 150, height: 75)
+                            .offset(y: -37.5)
+                        
+                        Circle()
+                            .fill(Color.white)
+                            .frame(width: 150, height: 75)
+                            .offset(y: 37.5)
+                        
+                        Circle()
+                            .fill(Color.white)
+                            .overlay(
+                                Circle()
+                                    .stroke(Color.black, lineWidth: 5)
+                            )
+                            .frame(width: 50, height: 50)
+                    }
+                    .frame(width: 150, height: 150)
+                   
+            Spacer()
         }
-        .background(.red)
     }
+    
+    
+    
+        
     
     func makePokedexLogo() -> some View {
         return HStack {
@@ -93,6 +175,11 @@ struct ContentView: View {
         
     }
 }
+
+
+
+
+
 
 #Preview {
     ContentView()
