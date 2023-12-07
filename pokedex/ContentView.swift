@@ -110,32 +110,42 @@ struct ContentView: View {
                 
             }
             )
-            Spacer()
+          
             
-            ZStack {
-                       
-                        Circle()
-                            .fill(Color.white)
-                        
-                        Circle()
-                            .fill(Color.red)
-                            .frame(width: 150, height: 75)
-                            .offset(y: -37.5)
-                        
-                        Circle()
-                            .fill(Color.white)
-                            .frame(width: 150, height: 75)
-                            .offset(y: 37.5)
-                        
-                        Circle()
-                            .fill(Color.white)
-                            .overlay(
-                                Circle()
-                                    .stroke(Color.black, lineWidth: 5)
-                            )
-                            .frame(width: 50, height: 50)
-                    }
-                    .frame(width: 150, height: 150)
+                
+                Image("Pokeball")
+                    .resizable()
+                    .frame(width: 100, height: 100)
+                    .scaledToFit()
+                    .scaleEffect(anchor: .center)
+                
+          
+            
+            
+//            ZStack {
+//                       
+//                        Circle()
+//                            .fill(Color.white)
+//                        
+//                        Circle()
+//                            .fill(Color.red)
+//                            .frame(width: 150, height: 75)
+//                            .offset(y: -37.5)
+//                        
+//                        Circle()
+//                            .fill(Color.white)
+//                            .frame(width: 150, height: 75)
+//                            .offset(y: 37.5)
+//                        
+//                        Circle()
+//                            .fill(Color.white)
+//                            .overlay(
+//                                Circle()
+//                                    .stroke(Color.black, lineWidth: 5)
+//                            )
+//                            .frame(width: 50, height: 50)
+//                    }
+//                    .frame(width: 150, height: 150)
                    
             Spacer()
         }
