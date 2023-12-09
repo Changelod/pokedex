@@ -6,6 +6,12 @@
 //
 import Foundation
 
+// name
+// number
+// imageName
+// types
+// description
+
 struct Pokemon: Identifiable {
     var id: UUID = UUID()
 
