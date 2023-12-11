@@ -46,6 +46,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F502C1EA2B276DE900C4762C /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
 		F5189E3B2B1D10ED003E6699 = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +94,7 @@
 		F546BE282B242F5A00120E02 /* GridView */ = {
 			isa = PBXGroup;
 			children = (
+				F502C1EA2B276DE900C4762C /* New Group */,
 				F58BBA832B248AE400C9437E /* PokemonGridView.swift */,
 				F546BE262B242E6A00120E02 /* PokemonGridItemView.swift */,
 				F58BBA872B24A30000C9437E /* PokemonGridDetail.swift */,
